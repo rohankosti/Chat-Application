@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Modern Chat App</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .chat-container {
+      width: 420px;
+      height: 600px;
+      background: #1e293b;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .header {
+      background: #0ea5e9;
+      padding: 15px;
+      color: white;
+      text-align: center;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    #messages {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      list-style: none;
+      margin: 0;
+    }
+
+    #messages li {
+      margin-bottom: 10px;
+      max-width: 70%;
+      padding: 10px 15px;
+      border-radius: 20px;
+      word-wrap: break-word;
+      font-size: 14px;
+    }
+
+    .self {
+      background: #22c55e;
+      align-self: flex-end;
+      color: white;
+      border-bottom-right-radius: 5px;
+    }
+
+    .other {
+      background: #334155;
+      align-self: flex-start;
+      color: white;
+      border-bottom-left-radius: 5px;
+    }
+
+    .system {
+      background: transparent;
+      color: #94a3b8;
+      text-align: center;
+      font-size: 12px;
+      align-self: center;
+    }
+
+    .input-area {
+      display: flex;
+      padding: 10px;
+      background: #0f172a;
+    }
+
+    input {
+      flex: 1;
+      padding: 12px;
+      border-radius: 25px;
+      border: none;
+      outline: none;
+      background: #334155;
+      color: white;
+    }
+
+    button {
+      margin-left: 10px;
+      padding: 10px 15px;
+      border-radius: 50%;
+      border: none;
+      background: #0ea5e9;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="chat-container">
+    <div class="header">💬 Real-Time Chat</div>
+    <ul id="messages"></ul>
+    <div class="input-area">
+      <input type="text" id="input" placeholder="Type message..." autocomplete="off" />
+      <button id="sendBtn">➤</button>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    // DOM Elements
+    const messages = document.getElementById("messages");
+    const sendBtn = document.getElementById("sendBtn");
+    const input = document.getElementById("input");
+
+    // Username
+    const username = prompt("Enter your name:");
+    socket.emit("join", username);
+
+    // Send Message Function
+    function sendMessage() {
+      const message = input.value.trim();
+      if (!message) return;
+      socket.emit("chat message", message);
+      input.value = "";
+    }
+
+    // Button Click
+    sendBtn.addEventListener("click", (e) => {
+      sendMessage()
+    });
+
+    // Enter Key
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        sendMessage();
+      }
+    });
+
+
+    // Receive Message 
+    socket.on("message", (msg) => { //beckend side se message a rha hai 
+      console.log(msg,"beck");
+      console.log(socket.on());
+      
+      const li = document.createElement("li");
+
+      if (msg.includes("joined") || msg.includes("left")) {
+        li.classList.add("system");
+        li.textContent = msg;
+      }
+      else if (msg.startsWith(username + ":")) {
+        li.classList.add("self");
+        li.textContent = msg.replace(username + ":", "").trim();
+      }
+      else {
+        li.classList.add("other");
+        li.textContent = msg;
+      }
+
+      messages.appendChild(li);
+      
+    });
+
+  </script>
+
+</body>
+
+</html>

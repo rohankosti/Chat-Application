@@ -1,0 +1,12 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">RealTime Chat</a>
+
+    <% if (typeof user !== "undefined") { %>
+      <div class="d-flex">
+        <span class="text-white me-3">Hi, <%= user.username %></span>
+        <a href="/logout" class="btn btn-danger btn-sm">Logout</a>
+      </div>
+    <% } %>
+  </div>
+</nav>

@@ -1,12 +1,264 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <a class="navbar-brand fw-bold" href="#">RealTime Chat</a>
+<!DOCTYPE html>
+<html lang="en">
 
-    <% if (typeof user !== "undefined") { %>
-      <div class="d-flex">
-        <span class="text-white me-3">Hi, <%= user.username %></span>
-        <a href="/logout" class="btn btn-danger btn-sm">Logout</a>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convoxa</title>
+
+  <!-- Google Font (Professional SaaS Look) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Custom Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            primary: '#4f46e5',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+   .chat-container {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    background: #111;
+    color: white;
+}
+
+.chat-top {
+    padding: 15px 20px;
+    background: #111;;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* border-bottom: 1px solid #222; */
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message {
+    max-width: 60%;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 14px;
+    
+}
+
+.message.self {
+    align-self: flex-end;
+    background: #0d6efd;
+}
+
+.message.other {
+    align-self: flex-start;
+    background: #2a2a2a;
+}
+
+.chat-bottom {
+    padding: 15px;
+    display: flex;
+    gap: 10px;
+    background: #1c1c1c;
+    border-top: 1px solid #222;
+}
+
+.chat-bottom input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #2a2a2a;
+    color: white;
+    outline: none;
+}
+
+.chat-bottom button {
+    padding: 10px 20px;
+    border: none;
+    background: #0d6efd;
+    color: white;
+    border-radius: 8px;
+}
+.profile-wrapper {
+    min-height: 90vh;
+    background: #0f0f14;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+}
+
+.profile-card {
+    width: 420px;
+    background: #1b1b23;
+    padding: 30px;
+    border-radius: 12px;
+    color: white;
+    box-shadow: 0 0 25px rgba(0,0,0,0.5);
+}
+
+.profile-avatar {
+    text-align: center;
+}
+
+.avatar-circle {
+    width: 90px;
+    height: 90px;
+    background: #5865f2;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: bold;
+    margin: auto;
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.profile-stats {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.profile-stats h5 {
+    margin-bottom: 5px;
+}
+
+.profile-actions {
+    display: flex;
+    justify-content: space-between;
+}
+  </style>
+
+</head>
+
+<body>
+
+  <header class="bg-slate-950 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+
+
+
+
+      <!-- Brand -->
+      <div class="flex items-center gap-3">
+
+        <!-- Logo -->
+        <div class="relative w-10 h-10 rounded-xl bg-indigo-600 
+            flex items-center justify-center 
+            shadow-lg shadow-indigo-600/30">
+
+          <!-- Subtle inner border -->
+          <div class="absolute inset-0 rounded-xl border border-white/10"></div>
+
+          <span class="text-white font-bold text-base tracking-wide">
+            CX
+          </span>
+
+        </div>
+
+        <!-- Brand Name -->
+        <span class="text-xl font-semibold text-white tracking-tight">
+          Convo<span class="text-indigo-400">xa</span>
+        </span>
+
       </div>
-    <% } %>
+      <!-- Navigation -->
+      <nav class="hidden md:flex items-center gap-10 text-sm font-medium">
+
+        <a href="/dashboard" class="relative text-slate-400 hover:text-white transition duration-300
+            after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0
+            after:bg-indigo-500 after:transition-all after:duration-300
+            hover:after:w-full">
+          Dashboard
+        </a>
+
+        <a href="/Rooms" class="relative text-slate-400 hover:text-white transition duration-300
+            after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0
+            after:bg-indigo-500 after:transition-all after:duration-300
+            hover:after:w-full">
+          Rooms
+        </a>
+
+        <a href="/Profile" class="relative text-slate-400 hover:text-white transition duration-300
+            after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0
+            after:bg-indigo-500 after:transition-all after:duration-300
+            hover:after:w-full">
+          Profile
+        </a>
+
+      </nav>
+
+
+      <!-- Right Section -->
+    <!-- Right Section -->
+<div class="flex items-center gap-5">
+
+  <!-- User Info -->
+  <div class="hidden md:flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800/60 transition cursor-pointer">
+
+    <!-- Avatar -->
+    <div class="relative">
+      <div class="w-9 h-9 rounded-full bg-indigo-600 
+                  flex items-center justify-center 
+                  text-sm font-semibold text-white shadow-md shadow-indigo-600/30">
+        RK
+      </div>
+
+      <!-- Online Dot -->
+      <span class="absolute bottom-0 right-0 w-2.5 h-2.5 
+                   bg-green-500 border-2 border-slate-900 rounded-full">
+      </span>
+    </div>
+
+    <!-- Name -->
+    <span class="text-sm text-white font-medium">
+      Rohan K
+    </span>
+
   </div>
-</nav>
+
+  <!-- Logout -->
+  <a href="/logout"
+     class="bg-indigo-600 hover:bg-indigo-500 
+            px-5 py-2 rounded-lg text-sm font-medium 
+            transition duration-200 shadow-md shadow-indigo-600/20">
+    Logout
+  </a>
+
+</div>
+  </header>

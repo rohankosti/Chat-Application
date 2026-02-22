@@ -1,21 +1,128 @@
-<div class="row justify-content-center">
-  <div class="col-md-5">
-    <div class="card shadow">
-      <div class="card-body">
-        <h3 class="text-center mb-4">Signup</h3>
+<!DOCTYPE html>
+<html lang="en">
 
-        <form action="/signup" method="POST">
-          <input type="text" name="username" placeholder="Username" class="form-control mb-3" required>
-          <input type="email" name="email" placeholder="Email" class="form-control mb-3" required>
-          <input type="password" name="password" placeholder="Password" class="form-control mb-3" required>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convoxa</title>
 
-          <button class="btn btn-dark w-100">Signup</button>
-        </form>
+  <!-- Google Font (Professional SaaS Look) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-        <div class="text-center mt-3">
-          <a href="/login">Already have account?</a>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Custom Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            primary: '#4f46e5',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <section class="min-h-screen flex items-center justify-center bg-slate-950 px-6 p-5">
+
+    <div class="w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-xl">
+
+      <!-- Brand -->
+      <div class="flex items-center justify-center gap-3 mb-8">
+
+        <div class="w-10 h-10 rounded-xl bg-indigo-600 
+                  flex items-center justify-center 
+                  shadow-lg shadow-indigo-600/30">
+          <span class="text-white font-semibold tracking-widest">CX</span>
         </div>
+
+        <h1 class="text-2xl font-semibold text-white tracking-tight">
+          Convo<span class="text-indigo-500">xa</span>
+        </h1>
+
       </div>
+
+      <!-- Heading -->
+      <h2 class="text-xl font-semibold text-white text-center mb-2">
+        Create Account
+      </h2>
+      <p class="text-sm text-slate-400 text-center mb-6">
+        Join Convoxa and start chatting in real-time
+      </p>
+
+      <!-- Form -->
+      <form action="/signup" method="POST" class="space-y-5">
+
+        <!-- Name -->
+        <div>
+          <label class="block text-sm text-slate-400 mb-2">Full Name</label>
+          <input type="text" name="name" required class="w-full px-4 py-3 bg-slate-800 border border-slate-700 
+                 rounded-lg text-white placeholder-slate-500 
+                 focus:outline-none focus:ring-2 focus:ring-indigo-500 
+                 transition" placeholder="Enter your name">
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label class="block text-sm text-slate-400 mb-2">Email</label>
+          <input type="email" name="email" required class="w-full px-4 py-3 bg-slate-800 border border-slate-700 
+                 rounded-lg text-white placeholder-slate-500 
+                 focus:outline-none focus:ring-2 focus:ring-indigo-500 
+                 transition" placeholder="Enter your email">
+        </div>
+
+        <!-- Password -->
+        <div>
+          <label class="block text-sm text-slate-400 mb-2">Password</label>
+          <input type="password" name="password" required class="w-full px-4 py-3 bg-slate-800 border border-slate-700 
+                 rounded-lg text-white placeholder-slate-500 
+                 focus:outline-none focus:ring-2 focus:ring-indigo-500 
+                 transition" placeholder="Create a password">
+        </div>
+
+        <!-- Confirm Password -->
+        <div>
+          <label class="block text-sm text-slate-400 mb-2">Confirm Password</label>
+          <input type="password" name="confirmPassword" required class="w-full px-4 py-3 bg-slate-800 border border-slate-700 
+                 rounded-lg text-white placeholder-slate-500 
+                 focus:outline-none focus:ring-2 focus:ring-indigo-500 
+                 transition" placeholder="Re-enter your password">
+        </div>
+
+        <!-- Button -->
+        <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-500 
+               text-white font-medium py-3 rounded-lg 
+               transition duration-200 shadow-md shadow-indigo-600/20">
+          Create Account
+        </button>
+
+      </form>
+
+      <!-- Footer Link -->
+      <p class="text-sm text-slate-400 text-center mt-6">
+        Already have an account?
+        <a href="/login" class="text-indigo-400 hover:text-indigo-300 transition">
+          Login
+        </a>
+      </p>
+
     </div>
-  </div>
-</div>
+
+  </section>
+
+  <%- include("partials/footer") %>

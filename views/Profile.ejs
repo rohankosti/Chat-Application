@@ -1,62 +1,73 @@
 <%- include('partials/header') %>
 
-<div class="profile-wrapper">
+  <div class="min-h-[90vh] bg-slate-950 flex justify-center items-start p-8">
 
-    <div class="profile-card">
+    <div
+      class="w-full max-w-xl bg-slate-900 rounded-2xl border border-slate-800 shadow-lg shadow-indigo-500/20 overflow-hidden">
 
-        <!-- Avatar Section -->
-        <div class="profile-avatar">
-            <div class="avatar-circle">
-               
-            </div>
-            
-            <span class="badge bg-success">Online</span>
-        </div>
+      <!-- Top Banner -->
+      <div class="h-24 bg-gradient-to-r from-indigo-600 to-purple-600"></div>
 
-        <hr>
+      <!-- Avatar + Username -->
+      <div class="flex flex-col items-center -mt-12 px-6">
+        <div class="avatar-circle mb-3 border-4 border-slate-900">U</div>
+        <!-- <h2 id="username" class="text-2xl font-semibold text-white">Username</h2> -->
+        <p class="text-slate-400 text-sm">Member Profile</p>
+      </div>
 
-        <!-- User Details -->
-        <div class="profile-details">
-            <div class="detail-item">
-                <span>Email</span>
-               
-            </div>
+      <!-- Divider -->
+      <div class="border-t border-slate-800 my-6"></div>
 
-            <div class="detail-item">
-                <span>Joined On</span>
-              
-            </div>
+      <!-- Profile Details -->
+      <div class="px-8 pb-8">
+        <h3 class="text-slate-400 text-sm uppercase tracking-wider mb-4">
+        
+        </h3>
 
-            <div class="detail-item">
-                <span>Role</span>
-                <strong>User</strong>
-            </div>
-        </div>
+        <!-- Table -->
+        <table class="w-full max-w-md bg-slate-900 p-6 rounded-2xl font-sans">
+          <thead>
+            <tr class="tr text-slate-400 text-sm gap-1 font-n">
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Joined</th>
+            </tr>
+          </thead>
+          <tbody id="rolldata"></tbody>
+        </table>
 
-        <hr>
-
-        <!-- Stats Section -->
-        <div class="profile-stats">
-            <div>
-           
-                <small>Rooms Joined</small>
-            </div>
-            <div>
-           
-                <small>Messages Sent</small>
-            </div>
-        </div>
-
-        <hr>
-
-        <!-- Actions -->
-        <div class="profile-actions">
-            <a href="#" class="btn btn-primary">Edit Profile</a>
-            <a href="/logout" class="btn btn-danger">Logout</a>
-        </div>
+   
+      </div>
 
     </div>
 
-</div>
+  </div>
 
-<%- include('partials/footer') %>
+  <%- include('partials/footer') %>
+
+    <script>
+      addEventListener("DOMContentLoaded", async (e) => {
+
+        const leavereauest = document.getElementById("leavereauest")
+        // const response = await fetch("http://localhost:3000/getleaverequest");
+        // const data = await response.json();
+        // console.log(data,"sd");
+
+
+
+        // data.forEach((e, index) => {
+
+
+        leavereauest.innerHTML += `
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+             
+       
+            </tr>`;
+        // });
+      });
+    </script>

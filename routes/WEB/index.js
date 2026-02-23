@@ -15,8 +15,19 @@ router.get("/Signup",(req,res)=>{
     res.render("Signup",{pagetittle:"Signup"})
 })
 router.get("/Profile",(req,res)=>{
-    res.render("Profile",{pagetittle:"Profile"})
-})
+    const user = {
+        username: "Rohan",
+        email: "rohan@gmail.com",
+        role: "User",
+        createdAt: new Date()
+    };
+
+    res.render("Profile", {
+        pagetittle: "Profile",
+        user,
+        stats: { messages: 45 } // optional for stats section
+    });
+});
 router.get("/Rooms",(req,res)=>{
     res.render("Rooms",{pagetittle:"Rooms"})
 })

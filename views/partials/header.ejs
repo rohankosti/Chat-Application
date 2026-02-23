@@ -32,136 +32,159 @@
     body {
       font-family: 'Inter', sans-serif;
     }
-   .chat-container {
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
-    background: #111;
-    color: white;
-}
 
-.chat-top {
-    padding: 15px 20px;
-    background: #111;;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* border-bottom: 1px solid #222; */
-}
+    .chat-container {
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      background: #111;
+      color: white;
+    }
 
-.chat-messages {
-    flex: 1;
-    padding: 20px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
+    .chat-top {
+      padding: 15px 20px;
+      background: #111;
+      ;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      /* border-bottom: 1px solid #222; */
+    }
 
-.message {
-    max-width: 60%;
-    padding: 10px 14px;
-    border-radius: 10px;
-    font-size: 14px;
-    
-}
+    .chat-messages {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
-.message.self {
-    align-self: flex-end;
-    background: #0d6efd;
-}
+    .message {
+      max-width: 60%;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 14px;
 
-.message.other {
-    align-self: flex-start;
-    background: #2a2a2a;
-}
+    }
 
-.chat-bottom {
-    padding: 15px;
-    display: flex;
-    gap: 10px;
-    background: #1c1c1c;
-    border-top: 1px solid #222;
-}
+    .message.self {
+      align-self: flex-end;
+      background: #0d6efd;
+    }
 
-.chat-bottom input {
-    flex: 1;
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    background: #2a2a2a;
-    color: white;
-    outline: none;
-}
+    .message.other {
+      align-self: flex-start;
+      background: #2a2a2a;
+    }
 
-.chat-bottom button {
-    padding: 10px 20px;
-    border: none;
-    background: #0d6efd;
-    color: white;
-    border-radius: 8px;
-}
-.profile-wrapper {
-    min-height: 90vh;
-    background: #0f0f14;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 0;
-}
+    .chat-bottom {
+      padding: 15px;
+      display: flex;
+      gap: 10px;
+      background: #1c1c1c;
+      border-top: 1px solid #222;
+    }
 
-.profile-card {
-    width: 420px;
-    background: #1b1b23;
-    padding: 30px;
-    border-radius: 12px;
-    color: white;
-    box-shadow: 0 0 25px rgba(0,0,0,0.5);
-}
+    .chat-bottom input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      background: #2a2a2a;
+      color: white;
+      outline: none;
+    }
 
-.profile-avatar {
-    text-align: center;
-}
+    .chat-bottom button {
+      padding: 10px 20px;
+      border: none;
+      background: #0d6efd;
+      color: white;
+      border-radius: 8px;
+    }
 
-.avatar-circle {
-    width: 90px;
-    height: 90px;
-    background: #5865f2;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 32px;
-    font-weight: bold;
-    margin: auto;
-}
+    .profile-wrapper {
+      min-height: 90vh;
+      background: #0f0f14;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 0;
+    }
 
-.profile-details {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
+    .profile-card {
+      width: 420px;
+      background: #1b1b23;
+      padding: 30px;
+      border-radius: 12px;
+      color: white;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+    }
 
-.detail-item {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-}
+    .profile-avatar {
+      text-align: center;
+    }
 
-.profile-stats {
-    display: flex;
-    justify-content: space-between;
-    text-align: center;
-}
+    .avatar-circle {
+      width: 90px;
+      height: 90px;
+      background: #5865f2;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      font-weight: bold;
+      margin: auto;
+    }
 
-.profile-stats h5 {
-    margin-bottom: 5px;
-}
+    .profile-details {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
 
-.profile-actions {
-    display: flex;
-    justify-content: space-between;
-}
+    .detail-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+    }
+
+    .profile-stats {
+      display: flex;
+      justify-content: space-between;
+      text-align: center;
+    }
+
+    .profile-stats h5 {
+      margin-bottom: 5px;
+    }
+
+    .profile-actions {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .avatar-box {
+      width: 110px;
+      height: 110px;
+      background: #0d6efd;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 38px;
+      font-weight: bold;
+      margin: auto;
+    }
+
+    .tr {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      
+    }
   </style>
 
 </head>
@@ -225,40 +248,40 @@
 
 
       <!-- Right Section -->
-    <!-- Right Section -->
-<div class="flex items-center gap-5">
+      <!-- Right Section -->
+      <div class="flex items-center gap-5">
 
-  <!-- User Info -->
-  <div class="hidden md:flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800/60 transition cursor-pointer">
+        <!-- User Info -->
+        <div
+          class="hidden md:flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800/60 transition cursor-pointer">
 
-    <!-- Avatar -->
-    <div class="relative">
-      <div class="w-9 h-9 rounded-full bg-indigo-600 
+          <!-- Avatar -->
+          <div class="relative">
+            <div class="w-9 h-9 rounded-full bg-indigo-600 
                   flex items-center justify-center 
                   text-sm font-semibold text-white shadow-md shadow-indigo-600/30">
-        RK
-      </div>
+              RK
+            </div>
 
-      <!-- Online Dot -->
-      <span class="absolute bottom-0 right-0 w-2.5 h-2.5 
+            <!-- Online Dot -->
+            <span class="absolute bottom-0 right-0 w-2.5 h-2.5 
                    bg-green-500 border-2 border-slate-900 rounded-full">
-      </span>
-    </div>
+            </span>
+          </div>
 
-    <!-- Name -->
-    <span class="text-sm text-white font-medium">
-      Rohan K
-    </span>
+          <!-- Name -->
+          <span class="text-sm text-white font-medium">
+            Rohan K
+          </span>
 
-  </div>
+        </div>
 
-  <!-- Logout -->
-  <a href="/logout"
-     class="bg-indigo-600 hover:bg-indigo-500 
+        <!-- Logout -->
+        <a href="/Login" class="bg-indigo-600 hover:bg-indigo-500 
             px-5 py-2 rounded-lg text-sm font-medium 
             transition duration-200 shadow-md shadow-indigo-600/20">
-    Logout
-  </a>
+          Logout
+        </a>
 
-</div>
+      </div>
   </header>

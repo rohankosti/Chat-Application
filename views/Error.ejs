@@ -1,24 +1,47 @@
 <%- include('partials/header') %>
 
-<div class="container-fluid d-flex justify-content-center align-items-center"
-     style="height:90vh; background: radial-gradient(circle at center, #111 0%, #000 100%);">
+    <section class="min-h-screen flex items-center justify-center bg-slate-950 px-6 relative overflow-hidden">
 
-    <div class="text-center">
-        <h1 style="font-size:120px; font-weight:800; color:#0d6efd; letter-spacing:5px;">
-            404
-        </h1>
+        <!-- Background Glow Effects -->
+        <div class="absolute w-72 h-72 bg-indigo-600/20 rounded-full blur-3xl top-10 left-10"></div>
+        <div class="absolute w-72 h-72 bg-purple-600/20 rounded-full blur-3xl bottom-10 right-10"></div>
 
-        <h3 class="text-light mb-3">Lost in Space 🚀</h3>
+        <div class="relative w-full max-w-xl bg-slate-900/80 backdrop-blur-xl 
+              border border-slate-800 rounded-3xl p-12 
+              shadow-2xl text-center">
 
-        <p class="text-secondary mb-4" style="max-width:500px; margin:auto;">
-            The page you are trying to access does not exist or has been removed.
-        </p>
+            <!-- 404 Big Gradient Text -->
+            <h1 class="text-8xl font-extrabold bg-gradient-to-r 
+               from-indigo-500 via-purple-500 to-pink-500 
+               bg-clip-text text-transparent animate-pulse">
+                404
+            </h1>
 
-        <a href="/dashboard" class="btn btn-primary px-4 py-2 rounded-pill shadow">
-            Go Back Home
-        </a>
-    </div>
+            <h2 class="text-2xl font-semibold text-white mt-4">
+                Lost in the Cosmos 🚀
+            </h2>
 
-</div>
+            <p class="text-slate-400 mt-4 mb-8 max-w-md mx-auto">
+                Oops! The page you're looking for doesn’t exist or has been moved
+                to another dimension.
+            </p>
 
-<%- include('partials/footer') %>
+            <div class="flex justify-center gap-4">
+                <a href="/dashboard" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 
+                text-white rounded-xl transition 
+                shadow-lg shadow-indigo-600/30">
+                    Go Home
+                </a>
+
+                <a href="/rooms" class="px-6 py-3 border border-slate-700 
+                text-slate-300 hover:bg-slate-800 
+                rounded-xl transition">
+                    Browse Rooms
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+    <%- include('partials/footer') %>

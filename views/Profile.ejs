@@ -10,7 +10,7 @@
 
       <!-- Avatar + Username -->
       <div class="flex flex-col items-center -mt-12 px-6">
-        <div class="avatar-circle mb-3 border-4 border-slate-900">U</div>
+        <div id="userletter" class="avatar-circle mb-3 border-4 border-slate-900">U</div>
         <!-- <h2 id="username" class="text-2xl font-semibold text-white">Username</h2> -->
         <p class="text-slate-400 text-sm">Member Profile</p>
       </div>
@@ -21,7 +21,7 @@
       <!-- Profile Details -->
       <div class="px-8 pb-8">
         <h3 class="text-slate-400 text-sm uppercase tracking-wider mb-4">
-        
+
         </h3>
 
         <!-- Table -->
@@ -30,14 +30,14 @@
             <tr class="tr text-slate-400 text-sm gap-1 font-n">
               <th>Name</th>
               <th>Email</th>
-              <th>Role</th>
+
               <th>Joined</th>
             </tr>
           </thead>
           <tbody id="rolldata"></tbody>
         </table>
 
-   
+
       </div>
 
     </div>
@@ -49,25 +49,25 @@
     <script>
       addEventListener("DOMContentLoaded", async (e) => {
 
-        const leavereauest = document.getElementById("leavereauest")
-        // const response = await fetch("http://localhost:3000/getleaverequest");
-        // const data = await response.json();
-        // console.log(data,"sd");
+        const rolldata = document.getElementById("rolldata")
+        const userletter = document.getElementById("userletter")
+        const response = await fetch("http://localhost:3000/getuserdata");
+        const data = await response.json();
+        console.log(data, "sd");
+
+        data.forEach((e, index) => {
+          userletter.innerHTML=e.name
 
 
+          rolldata.innerHTML += `
+             <tr>
+   
+    <td>${e.name}</td>
+    <td>${e.email}</td>
+    <td>${new Date(e.createdAt).toLocaleDateString()}</td>
+    
 
-        // data.forEach((e, index) => {
-
-
-        leavereauest.innerHTML += `
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-             
-       
-            </tr>`;
-        // });
+  </tr>`;
+        });
       });
     </script>

@@ -10,7 +10,7 @@
 
       <!-- Avatar + Username -->
       <div class="flex flex-col items-center -mt-12 px-6">
-        <div id="userletter" class="avatar-circle mb-3 border-4 border-slate-900" ></div>
+        <div id="userletter" class="avatar-circle mb-3 border-4 border-slate-900"></div>
         <!-- <h2 id="username" class="text-2xl font-semibold text-white">Username</h2> -->
         <p class="text-slate-400 text-sm">Member Profile</p>
       </div>
@@ -25,18 +25,17 @@
         </h3>
 
         <!-- Table -->
-        <table class="w-full max-w-md bg-slate-900 p-6 rounded-2xl font-sans">
+        <table class="w-full text-left border-collapse">
           <thead>
-            <tr class="tr text-slate-400 text-sm gap-1 font-n">
-              <th>Name</th>
-              <th>Email</th>
-
-              <th>Joined</th>
+            <tr class="border-b border-slate-700 text-slate-400 text-sm">
+              <th class="py-3">Name</th>
+              <th class="py-3">Email</th>
+              <th class="py-3">Joined</th>
             </tr>
           </thead>
-          <tbody id="rolldata"></tbody>
-        </table>
 
+          <tbody id="rolldata" class="text-slate-300 text-sm"></tbody>
+        </table>
 
       </div>
 
@@ -55,22 +54,17 @@
         const data = await response.json();
         console.log(data, "sd");
 
-        //       data.forEach((e, index) => {
-        //         userletter.innerHTML = e.name
-
-
-        //         rolldata.innerHTML += `
-        //            <tr>
-
-        //   <td>${e.name}</td>
-        //   <td>${e.email}</td>
-        //   <td>${new Date(e.createdAt).toLocaleDateString()}</td>
-
-
-        // </tr>`;
-        //       });
+//         data.forEach((e, index) => {
+          rolldata.innerHTML += `
+<tr class="border-b border-slate-800 hover:bg-slate-800/40 transition">
+  <td class="py-3">${data.name}</td>
+  <td class="py-3">${data.email}</td>
+  <td class="py-3">${new Date(data.createdAt).toLocaleDateString()}</td>
+</tr>
+`;
+//         });
         const local = JSON.parse(localStorage.getItem("User"));
-        console.log(local);
+        // console.log(local);
 
 
         const firstLetter = local.name.charAt(0).toUpperCase();

@@ -22,8 +22,6 @@ app.use(WEBROUTES);
 //MongoDB routes
 connectdb();
 
-
-
 app.listen(3000, () => {
   console.log(`http://localhost:3000/signup`);
 });

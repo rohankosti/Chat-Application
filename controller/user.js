@@ -21,7 +21,10 @@ const storeuser = async (req, res) => {
 
 const getuser = async (req, res) => {
   try {
-    const readuser = await user.find().limit(1);
+    const userid = req.user.id;
+    // console.log(userid);
+
+    const readuser = await user.findById(userid);
     res.status(200).json(readuser);
   } catch (error) {
     console.error(error);

@@ -178,13 +178,6 @@
       font-weight: bold;
       margin: auto;
     }
-
-    .tr {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      
-    }
   </style>
 
 </head>
@@ -260,7 +253,7 @@
             <div class="w-9 h-9 rounded-full bg-indigo-600 
                   flex items-center justify-center 
                   text-sm font-semibold text-white shadow-md shadow-indigo-600/30" id="uppercase">
-              
+
             </div>
 
             <!-- Online Dot -->
@@ -271,7 +264,7 @@
 
           <!-- Name -->
           <span class="text-sm text-white font-medium" id="headuser">
-          
+
           </span>
 
         </div>
@@ -287,19 +280,19 @@
   </header>
 
   <script>
-  document.addEventListener("DOMContentLoaded",(e)=>{
+    document.addEventListener("DOMContentLoaded", (e) => {
 
-  const local= JSON.parse(localStorage.getItem("User"));
-  // const local= localStorage.getItem("obj"));
-    // console.log(local);
+      const local = JSON.parse(localStorage.getItem("User"));
+      // const local= localStorage.getItem("obj"));
+      // console.log(local);
 
-    const headuser = document.getElementById("headuser");
-    headuser.innerHTML=local.name;
+      const headuser = document.getElementById("headuser");
+      headuser.innerHTML = local.name;
 
-    // const upercase = document.getElementById("upercase");
+      // const upercase = document.getElementById("upercase");
 
-    const firstLetter = local.name.charAt(0).toUpperCase();
-    document.getElementById("uppercase").innerText = firstLetter;
-    
-  })
-</script>
+      const firstLetter = local.name.charAt(0).toUpperCase();
+      document.getElementById("uppercase").innerText = firstLetter;
+
+    })
+  </script>

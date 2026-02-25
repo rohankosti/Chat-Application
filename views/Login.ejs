@@ -131,9 +131,9 @@
         })
 
         const data = await res.json();
-       
-        const User= JSON.parse(localStorage.getItem("User"));
-        localStorage.setItem("User", JSON.stringify(User));
+        console.log(data);
+
+        localStorage.setItem("User", JSON.stringify(data.User)); //Beckend send User object
 
         if (res.ok) {
           eroor.innerHTML = `

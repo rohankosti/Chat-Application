@@ -10,7 +10,7 @@
 
       <!-- Avatar + Username -->
       <div class="flex flex-col items-center -mt-12 px-6">
-        <div id="userletter" class="avatar-circle mb-3 border-4 border-slate-900">U</div>
+        <div id="userletter" class="avatar-circle mb-3 border-4 border-slate-900" ></div>
         <!-- <h2 id="username" class="text-2xl font-semibold text-white">Username</h2> -->
         <p class="text-slate-400 text-sm">Member Profile</p>
       </div>
@@ -55,19 +55,33 @@
         const data = await response.json();
         console.log(data, "sd");
 
-        data.forEach((e, index) => {
-          userletter.innerHTML = e.name
+        //       data.forEach((e, index) => {
+        //         userletter.innerHTML = e.name
 
 
-          rolldata.innerHTML += `
-             <tr>
-   
-    <td>${e.name}</td>
-    <td>${e.email}</td>
-    <td>${new Date(e.createdAt).toLocaleDateString()}</td>
-    
+        //         rolldata.innerHTML += `
+        //            <tr>
 
-  </tr>`;
-        });
+        //   <td>${e.name}</td>
+        //   <td>${e.email}</td>
+        //   <td>${new Date(e.createdAt).toLocaleDateString()}</td>
+
+
+        // </tr>`;
+        //       });
+        const local = JSON.parse(localStorage.getItem("User"));
+        console.log(local);
+
+
+        const firstLetter = local.name.charAt(0).toUpperCase();
+        document.getElementById("userletter").innerHTML = firstLetter;
+
       });
+
+
+
+
+
+
+
     </script>

@@ -8,7 +8,7 @@
     <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-10 gap-6">
       <div>
         <h1 class="text-3xl font-semibold text-white">
-          Welcome back, <span class="text-indigo-500">Rohan</span> 👋
+          Welcome back, <span class="text-indigo-500" id="username"></span> 👋
         </h1>
         <p class="text-slate-400 mt-2">
           Here’s what’s happening in your workspace today.
@@ -126,5 +126,17 @@
   </div>
 
 </section>
+<script>
+  document.addEventListener("DOMContentLoaded",(e)=>{
+
+  const local= JSON.parse(localStorage.getItem("User"));
+  // const local= localStorage.getItem("obj"));
+    console.log(local);
+
+    const username = document.getElementById("username");
+    username.innerHTML=local.name;
+    
+  })
+</script>
 
 <%- include("partials/footer") %>

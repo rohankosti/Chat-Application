@@ -162,7 +162,9 @@
         const data = await res.json();
         console.log(data);
 
-        if (!res.ok) {
+        localStorage.setItem("User",JSON.stringify(obj));
+
+        if (res.ok) {
 
           eroor.innerHTML = `
           <div class="bg-green-500/10 border border-green-500 
@@ -170,7 +172,9 @@
             ${data.msg}
           </div>`;
           signupform.reset();
+
           setTimeout(() => {
+            window.location.href="/Login"
             eroor.innerHTML=""
           }, 2000);
         }

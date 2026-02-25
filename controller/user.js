@@ -21,7 +21,7 @@ const storeuser = async (req, res) => {
 
 const getuser = async (req, res) => {
   try {
-    const readuser = await user.find();
+    const readuser = await user.find().limit(1);
     res.status(200).json(readuser);
   } catch (error) {
     console.error(error);

@@ -1,8 +1,10 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config()
 
 const connectdb = async () => {
   try {
-    await mongoose.connect("mongodb://admin:admin123@127.0.0.1:27017/convoxa?authSource=admin");
+    await mongoose.connect(process.env.MONGO_URL);
     console.log("MongoDB Connected sucsesfully");
   } catch (error) {
     console.error("MongoDB connection error:", error);

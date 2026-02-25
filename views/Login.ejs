@@ -66,7 +66,7 @@
       </p>
 
       <!-- Form -->
-      <form action="/login" method="POST" class="space-y-5">
+      <form id="loginform" class="space-y-5">
 
         <!-- Email -->
         <div>
@@ -74,7 +74,7 @@
           <input type="email" name="email" required class="w-full px-4 py-3 bg-slate-800 border border-slate-700 
                  rounded-lg text-white placeholder-slate-500 
                  focus:outline-none focus:ring-2 focus:ring-indigo-500 
-                 transition" placeholder="Enter your email">
+                 transition" placeholder="Enter your email" id="email">
         </div>
 
         <!-- Password -->
@@ -83,8 +83,9 @@
           <input type="password" name="password" required class="w-full px-4 py-3 bg-slate-800 border border-slate-700 
                  rounded-lg text-white placeholder-slate-500 
                  focus:outline-none focus:ring-2 focus:ring-indigo-500 
-                 transition" placeholder="Enter your password">
+                 transition" placeholder="Enter your password" id="password">
         </div>
+
 
         <!-- Button -->
         <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-500 
@@ -102,9 +103,66 @@
           Sign up
         </a>
       </p>
+      <div id="err" class="mt-2 text-sm text-center w-full text-red-400 min-h-[20px]"></div>
 
     </div>
-
   </section>
+
+  <script>
+    const loginform = document.getElementById("loginform");
+    const eroor = document.getElementById("err");
+    loginform.addEventListener("submit", async (e) => {
+      try {
+
+        e.preventDefault()
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const obj = {
+          email: email,
+          password: password
+        };
+
+        const res = await fetch("http://localhost:3000/logindata", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(obj)
+        })
+
+        const data = await res.json();
+        console.log(res);
+        console.log(data);
+
+        if (res.ok) {
+          eroor.innerHTML = `
+        <div class="bg-green-500/10 border border-green-500 
+        text-green-400 px-4 py-2 rounded-lg">
+        ${data.msg}
+        </div>`;
+        setTimeout(() => {
+          window.location.href="/Dashboard"
+          eroor.innerHTML=""
+        }, 2000);
+        }
+
+        else {
+          eroor.innerHTML = `
+    <div class="bg-red-500/10 border border-red-500 
+    text-red-400 px-4 py-2 rounded-lg">
+    ${data.msg}
+    </div>`;
+          loginform.reset()
+
+        }
+      } catch (error) {
+        // console.error(eroor);
+        // loginform.reset()
+
+      }
+
+
+    })
+  </script>
 
   <%- include("partials/footer") %>

@@ -1,7 +1,19 @@
 # 💬 Real-Time Chat Application
 
-A full-stack real-time chat application built using Node.js, Express, MongoDB, JWT, EJS, and Socket.IO.
+Chat Application — This is my chat application project based on node.js express.js and also use MongoDB to store all chart and make real-time chat application 
 
+# Convoxa - Real-Time Chat Application
+
+![Convoxa](https://img.shields.io/badge/Status-Active-green)
+![Node.js](https://img.shields.io/badge/Node.js-v18%2B-green)
+![Express](https://img.shields.io/badge/Express.js-4.x-blue)
+![MongoDB](https://img.shields.io/badge/MongoDB-NoSQL-green)
+![Socket.IO](https://img.shields.io/badge/Socket.IO-Real--time-orange)
+![License](https://img.shields.io/badge/License-MIT-blue)
+
+A modern, real-time chat application built with **Node.js, Express.js, MongoDB, and Socket.IO**. Features user authentication via JWT, persistent message storage, and instant messaging capabilities.
+
+---
 ---
 
 ## 🚀 Features

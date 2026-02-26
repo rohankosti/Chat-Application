@@ -19,7 +19,7 @@ router.get("/Profile", authoraization, (req, res) => {
   res.render("Profile", { pagetittle: "Profile" });
 });
 router.get("/Rooms", authoraization, (req, res) => {
-  res.render("Rooms", { pagetittle: "Rooms" });
+  res.render("Rooms", { pagetittle: "Rooms" , user: req.user });
 });
 router.get("/Logout", (req, res) => {
   res.clearCookie("token");

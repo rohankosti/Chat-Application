@@ -172,13 +172,14 @@
             ${data.msg}
           </div>`;
           signupform.reset();
-
+          
           setTimeout(() => {
             window.location.href="/Login"
             eroor.innerHTML=""
           }, 2000);
         }
         else {
+          signupform.reset();
           eroor.innerHTML = `
           <div class="bg-red-500/10 border border-red-500 
                       text-red-400 px-4 py-2 rounded-lg">

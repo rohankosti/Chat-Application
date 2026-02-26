@@ -1,29 +1,21 @@
 <%- include('partials/header') %>
-
   <div class="min-h-[90vh] bg-slate-950 flex justify-center items-start p-8">
-
     <div
       class="w-full max-w-xl bg-slate-900 rounded-2xl border border-slate-800 shadow-lg shadow-indigo-500/20 overflow-hidden">
-
       <!-- Top Banner -->
       <div class="h-24 bg-gradient-to-r from-indigo-600 to-purple-600"></div>
-
       <!-- Avatar + Username -->
       <div class="flex flex-col items-center -mt-12 px-6">
         <div id="userletter" class="avatar-circle mb-3 border-4 border-slate-900"></div>
         <!-- <h2 id="username" class="text-2xl font-semibold text-white">Username</h2> -->
         <p class="text-slate-400 text-sm">Member Profile</p>
       </div>
-
       <!-- Divider -->
       <div class="border-t border-slate-800 my-6"></div>
-
       <!-- Profile Details -->
       <div class="px-8 pb-8">
         <h3 class="text-slate-400 text-sm uppercase tracking-wider mb-4">
-
         </h3>
-
         <!-- Table -->
         <table class="w-full text-left border-collapse">
           <thead>
@@ -33,49 +25,26 @@
               <th class="py-3">Joined</th>
             </tr>
           </thead>
-
           <tbody id="rolldata" class="text-slate-300 text-sm"></tbody>
         </table>
-
       </div>
-
     </div>
-
   </div>
-
   <%- include('partials/footer') %>
-
     <script>
       addEventListener("DOMContentLoaded", async (e) => {
-
         const rolldata = document.getElementById("rolldata")
         const userletter = document.getElementById("userletter")
         const response = await fetch("http://localhost:3000/getuserdata");
         const data = await response.json();
-        console.log(data, "sd");
-
-//         data.forEach((e, index) => {
-          rolldata.innerHTML += `
-<tr class="border-b border-slate-800 hover:bg-slate-800/40 transition">
-  <td class="py-3">${data.name}</td>
-  <td class="py-3">${data.email}</td>
-  <td class="py-3">${new Date(data.createdAt).toLocaleDateString()}</td>
-</tr>
-`;
-//         });
+        rolldata.innerHTML += `
+            <tr class="border-b border-slate-800 hover:bg-slate-800/40 transition">
+              <td class="py-3">${data.name}</td>
+              <td class="py-3">${data.email}</td>
+              <td class="py-3">${new Date(data.createdAt).toLocaleDateString()}</td>
+            </tr>`;
         const local = JSON.parse(localStorage.getItem("User"));
-        // console.log(local);
-
-
         const firstLetter = local.name.charAt(0).toUpperCase();
         document.getElementById("userletter").innerHTML = firstLetter;
-
       });
-
-
-
-
-
-
-
     </script>

@@ -1,43 +1,87 @@
 <%- include('partials/header') %>
-
-<div class="chat-container">
-
-    <!-- Header -->
-    <!-- <div class="chat-top">
+    <div class="chat-container">
+        <!-- Header -->
+        <!-- <div class="chat-top">
         <div>
-       
             <small id="onlineCount">Online: 0</small>
         </div>
-
         <div>
             <span class="me-3">User: <strong></strong></span>
             <a href="/dashboard" class="bg-red-600 
             px-5 py-2 rounded-lg text-sm font-medium 
             transition duration-200 shadow-md shadow-indigo-600/20">Exit</a>
         </div>
-    </div> -->
-
-
-    <!-- Messages Area -->
-<div id="messages" 
-     class="chat-messages h-[400px] overflow-y-auto px-4 py-2 space-y-2">
-</div>
-
-    <!-- Input Area -->
-    <div class="chat-bottom">
-        <input 
-            type="text"
-            id="messageInput"
-            placeholder="Type message..."
-            autocomplete="off"
-        >
-        <button id="sendBtn">Send</button>
+        </div> -->
+        <!-- Messages Area -->
+        <div id="messages" class="flex flex-col chat-messages h-[400px] overflow-y-auto px-4 py-2 space-y-2">
+        </div>
+        <!-- Input Area -->
+        <div class="chat-bottom">
+            <input type="text" id="messageInput" placeholder="Type message..." autocomplete="off">
+            <button id="sendBtn">Send</button>
+        </div>
     </div>
+    <%- include('partials/footer') %>
+    <script src="/socket.io/socket.io.js"></script>
+<script>
+const socket = io();
 
-</div>
+const messagesDiv = document.getElementById("messages");
+const input = document.getElementById("messageInput");
+const sendBtn = document.getElementById("sendBtn");
 
+// Load old messages
+document.addEventListener("DOMContentLoaded", async () => {
+  const res = await fetch("http://localhost:3000/roomchat");
+  const data = await res.json();
+  console.log(data);
+  
 
+  data.forEach(msg => {
+    addMessage(msg.username, msg.text);
+  });
+});
 
+// Send message
+function sendMessage() {
+  const message = input.value.trim();
+  if (!message) return;
 
+  socket.emit("chatMessage", {
+    userId: "<%= user._id %>",
+    username: "<%= user.username %>",
+    message: message
+  });
 
-<%- include('partials/footer') %>
+  input.value = "";
+}
+
+sendBtn.addEventListener("click", sendMessage);
+
+input.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    sendMessage();
+  }
+});
+
+// Receive message
+socket.on("message", (data) => {
+  addMessage(data.username, data.message);
+});
+
+function addMessage(username, text) {
+  const div = document.createElement("div");
+  div.classList.add("p-2", "rounded", "max-w-[70%]");
+
+  if (username === currentUser) {
+    div.classList.add("bg-green-500", "text-white", "self-end");
+  } else {
+    div.classList.add("bg-gray-700", "text-white", "self-start");
+  }
+
+  div.textContent = username + ": " + text;
+  messagesDiv.appendChild(div);
+
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+</script>

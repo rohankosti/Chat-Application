@@ -28,20 +28,26 @@ app.use(WEBROUTES);
 connectdb();
 
 io.on("connection", (socket) => {
-  socket.on("chatMessage", async (data) => {
-    // DB save
+  // ✅ Username store karo socket me
+  socket.on("join", (username) => {
+    console.log("JOINED USER:", username);
+    socket.username = username;
+  });
+
+  // ✅ Message receive
+  socket.on("chatMessage", async (message) => {
+    // Mongo Save
     const newMessage = new Message({
-    
-      username: data.username,
-      text: data.message,
+      username: socket.username,
+      text: message,
     });
 
     await newMessage.save();
 
-    // Emit sabko
+    // Sabko bhejo
     io.emit("message", {
-      username: data.username,
-      message: data.message,
+      username: socket.username,
+      message: message,
     });
   });
 });

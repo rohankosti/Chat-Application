@@ -19,6 +19,7 @@ router.get("/Profile", authoraization, (req, res) => {
   res.render("Profile", { pagetittle: "Profile" });
 });
 router.get("/Rooms", authoraization, (req, res) => {
+   console.log("REQ.USER:", req.user);
   res.render("Rooms", { pagetittle: "Rooms" , user: req.user });
 });
 router.get("/Logout", (req, res) => {

@@ -12,38 +12,36 @@ Chat Application — This is my chat application project based on node.js expres
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
 A modern, real-time chat application built with **Node.js, Express.js, MongoDB, and Socket.IO**. Features user authentication via JWT, persistent message storage, and instant messaging capabilities.
-
 ---
----
-🚀 Features
+## 🚀 Features
 
-🔐 User Authentication (Register/Login)
-🛡 JWT Based Authorization
-💬 Real-Time Messaging using Socket.IO
-👤 User Name Display in Chat
-↔ Left / Right Message UI (Own vs Others)
-📡 Live Multi-Browser Communication
-📧 Email Notifications using Nodemailer
-🚪 Logout Functionality
-🎨 Responsive UI with Tailwind CSS
-🏗 MVC Architecture
+- 🔐 User Authentication (Register/Login)
+- 🛡 JWT Based Authorization
+- 💬 Real-Time Messaging using Socket.IO
+- 👤 User Name Display in Chat
+- ↔ Left / Right Message UI (Own vs Others)
+- 📡 Live Multi-Browser Communication
+- 📧 Email Notifications using Nodemailer
+- 🚪 Logout Functionality
+- 🎨 Responsive UI with Tailwind CSS
+- 🏗 MVC Architecture
 
-🛠 Tech Stack
-Backend
 
-Node.js
-Express.js
-MongoDB
-Mongoose
-JWT
-Socket.IO
-Nodemailer
+## 🛠 Tech Stack
 
-Frontend
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JWT
+- Socket.IO
+- Nodemailer
 
-EJS
-Tailwind CSS
-Vanilla JavaScript
+### Frontend
+- EJS
+- Tailwind CSS
+- Vanilla JavaScript
 
 📧 Email Flow
 
@@ -55,6 +53,8 @@ Email sent securely using environment variables
 ---
 
 ## 📂 Project Structure (MVC)
+
+```
 CHAT-APPLICATION/
 │
 ├── models/
@@ -62,12 +62,13 @@ CHAT-APPLICATION/
 ├── routes/
 ├── middlewares/
 ├── views/
-│ ├── partials/
-│ ├── Rooms.ejs
+│   ├── partials/
+│   ├── Rooms.ejs
 │
 ├── public/
 ├── server.js
 └── package.json
+```
 
 ---
 

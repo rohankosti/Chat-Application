@@ -36,7 +36,6 @@
 
       // Join event
       socket.emit("join", currentUser);
-
       // Load old messages
       document.addEventListener("DOMContentLoaded", async () => {
         const res = await fetch("/roomchat");
